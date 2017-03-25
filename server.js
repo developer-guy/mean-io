@@ -10,8 +10,8 @@ var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 
-var user = process.env.MODULUS_USER || 'bapaydin67';
-var password = process.env.MODULUS_PASSWORD || '3239966bb';
+var user = process.env.MODULUS_USER;
+var password = process.env.MODULUS_PASSWORD;
 
 console.log(user);
 console.log(password);

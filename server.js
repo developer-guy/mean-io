@@ -10,13 +10,13 @@ var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 
-var user = process.env.MODULUS_USER;
-var password = process.env.MODULUS_PASSWORD;
+var user = process.env.MODULUS_USER || 'bapaydin67';
+var password = process.env.MODULUS_PASSWORD || '3239966bb';
 
 console.log(user);
 console.log(password);
 
-mongoose.connect('mongodb://bapaydin67:3239966bb@olympia.modulusmongo.net:27017/ividE2go');
+mongoose.connect('mongodb://' + user + ':' + password + '@olympia.modulusmongo.net:27017/ividE2go');
 
 app.use(express.static(__dirname + '/public')); //set the static files location
 app.use(morgan('dev')); //log every request to the console
@@ -67,6 +67,10 @@ app.delete('/api/todos/:todo_id', function (req, res) {
     });
 });
 
+
+app.get('*', function (req, res) {
+    res.sendfile('./public/index.html');
+});
 
 app.listen(8080);
 console.log("Listening on port 8080");
